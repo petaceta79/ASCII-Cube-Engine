@@ -8,8 +8,8 @@ using namespace std;
 
 const float densidad = 0.3; // Cómo de relleno están los cubos
 
-const int screen_width = 120;   
-const int screen_height = 60;  
+const int screen_width = 120; // Tamaño de la pantalla
+const int screen_height = 60; 
 
 const int K1 = 40;  // Factor de escala (más grande → más ancho)
 const int K2 = 40;   // Factor distancia desde el 'ojo' (más grande → más pequeño y alejado)
@@ -30,7 +30,7 @@ const vector<vector<bool>> cara_creeper = {
 };
 
 // Funciones para dibujar las caras del cubo
-void render_cara(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_cara(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -45,8 +45,8 @@ void render_cara(const float &sinA, const float &cosA, const float &sinB, const 
             float e_ = y_mov + e;
             float pos_ = z_mov + pos;
 
-            float x = i_*cosA + pos_*sinA;
-            float y = e_*cosB + (i_*sinA - pos_*cosA)*sinB;
+            float x = (i_*cosA + pos_*sinA)*cosC + (e_*cosB + (i_*sinA - pos_*cosA)*sinB)*sinC;
+            float y = (e_*cosB + (i_*sinA - pos_*cosA)*sinB)*cosC - (i_*cosA + pos_*sinA)*sinC;
             float z = (i_*sinA - pos_*cosA)*cosB - e_*sinB;
             
             float ooz = 1/(z + K2);
@@ -71,7 +71,7 @@ void render_cara(const float &sinA, const float &cosA, const float &sinB, const 
     }
 }
 
-void render_pared_delantera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_delantera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -86,8 +86,8 @@ void render_pared_delantera(const float &sinA, const float &cosA, const float &s
             float e_ = y_mov + e;
             float pos_ = z_mov + pos;
 
-            float x = i_*cosA + pos_*sinA;
-            float y = e_*cosB + (i_*sinA - pos_*cosA)*sinB;
+            float x = (i_*cosA + pos_*sinA)*cosC + (e_*cosB + (i_*sinA - pos_*cosA)*sinB)*sinC;
+            float y = (e_*cosB + (i_*sinA - pos_*cosA)*sinB)*cosC - (i_*cosA + pos_*sinA)*sinC;
             float z = (i_*sinA - pos_*cosA)*cosB - e_*sinB;
             
             float ooz = 1/(z + K2);
@@ -107,7 +107,7 @@ void render_pared_delantera(const float &sinA, const float &cosA, const float &s
     }
 }
 
-void render_pared_trasera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_trasera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -122,9 +122,8 @@ void render_pared_trasera(const float &sinA, const float &cosA, const float &sin
             float e_ = y_mov + e;
             float pos_ = z_mov + pos;
 
-
-            float x = i_*cosA + pos_*sinA;
-            float y = e_*cosB + (i_*sinA - pos_*cosA)*sinB;
+            float x = (i_*cosA + pos_*sinA)*cosC + (e_*cosB + (i_*sinA - pos_*cosA)*sinB)*sinC;
+            float y = (e_*cosB + (i_*sinA - pos_*cosA)*sinB)*cosC - (i_*cosA + pos_*sinA)*sinC;
             float z = (i_*sinA - pos_*cosA)*cosB - e_*sinB;
             
             float ooz = 1/(z + K2);
@@ -144,7 +143,7 @@ void render_pared_trasera(const float &sinA, const float &cosA, const float &sin
     }
 }
 
-void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -159,8 +158,8 @@ void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, 
             float e_ = y_mov + e;
             float pos_ = z_mov + pos;
 
-            float x = pos_*cosA - e_*sinA;
-            float y = i_*cosB + (pos_*sinA + e_*cosA)*sinB;
+            float x = (pos_*cosA - e_*sinA)*cosC + (i_*cosB + (pos_*sinA + e_*cosA)*sinB)*sinC;
+            float y = (i_*cosB + (pos_*sinA + e_*cosA)*sinB)*cosC - (pos_*cosA - e_*sinA)*sinC;
             float z = (pos_*sinA + e_*cosA)*cosB - i_*sinB;
             
             float ooz = 1/(z + K2);
@@ -180,7 +179,7 @@ void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, 
     }
 }
 
-void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -195,8 +194,8 @@ void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, c
             float e_ = y_mov + e;
             float pos_ = z_mov + pos;
 
-            float x = pos_*cosA - e_*sinA;
-            float y = i_*cosB + (pos_*sinA + e_*cosA)*sinB;
+            float x = (pos_*cosA - e_*sinA)*cosC + (i_*cosB + (pos_*sinA + e_*cosA)*sinB)*sinC;
+            float y = (i_*cosB + (pos_*sinA + e_*cosA)*sinB)*cosC - (pos_*cosA - e_*sinA)*sinC;
             float z = (pos_*sinA + e_*cosA)*cosB - i_*sinB;
             
             float ooz = 1/(z + K2);
@@ -216,7 +215,7 @@ void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, c
     }
 }
 
-void render_techo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_techo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -231,8 +230,8 @@ void render_techo(const float &sinA, const float &cosA, const float &sinB, const
             float e_ = y_mov + e;
             float pos_ = z_mov + pos;
 
-            float x = i_*cosA - e_*sinA;
-            float y = pos_*cosB + (i_*sinA + e_*cosA)*sinB;
+            float x = (i_*cosA - e_*sinA)*cosC + (pos_*cosB + (i_*sinA + e_*cosA)*sinB)*sinC;
+            float y = (pos_*cosB + (i_*sinA + e_*cosA)*sinB)*cosC - (i_*cosA - e_*sinA)*sinC;
             float z = (i_*sinA + e_*cosA)*cosB - pos_*sinB;
             
             float ooz = 1/(z + K2);
@@ -252,7 +251,7 @@ void render_techo(const float &sinA, const float &cosA, const float &sinB, const
     }
 }
 
-void render_suelo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_suelo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -267,8 +266,8 @@ void render_suelo(const float &sinA, const float &cosA, const float &sinB, const
             float e_ = y_mov + e;
             float pos_ = z_mov + pos;
 
-            float x = i_*cosA - e_*sinA;
-            float y = pos_*cosB + (i_*sinA + e_*cosA)*sinB;
+            float x = (i_*cosA - e_*sinA)*cosC + (pos_*cosB + (i_*sinA + e_*cosA)*sinB)*sinC;
+            float y = (pos_*cosB + (i_*sinA + e_*cosA)*sinB)*cosC - (i_*cosA - e_*sinA)*sinC;
             float z = (i_*sinA + e_*cosA)*cosB - pos_*sinB;
             
             float ooz = 1/(z + K2);
@@ -289,60 +288,60 @@ void render_suelo(const float &sinA, const float &cosA, const float &sinB, const
 }
 
 // Funciones para el renderizado de cubos u objetos
-void render_cubo(const int ancho, const int alto, const int profundo, const int x, const int y, const int z, const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer) {
+void render_cubo(const int ancho, const int alto, const int profundo, const int x, const int y, const int z, const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer) {
     // pared trasera 
-    render_pared_trasera(sinA, cosA, sinB, cosB, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z);
+    render_pared_trasera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z);
     
     // pared delantera
-    render_pared_delantera(sinA, cosA, sinB, cosB, output, zbuffer, (profundo/2), ancho, alto, x, y, -z);
+    render_pared_delantera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (profundo/2), ancho, alto, x, y, -z);
 
     // pared dere
-    render_pared_dere(sinA, cosA, sinB, cosB, output, zbuffer, (ancho/2), alto, profundo, y, z, x);
+    render_pared_dere(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (ancho/2), alto, profundo, y, z, x);
 
     // pared izq
-    render_pared_izq(sinA, cosA, sinB, cosB, output, zbuffer, -(ancho/2), alto, profundo, y, z, x);
+    render_pared_izq(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(ancho/2), alto, profundo, y, z, x);
 
     // techo
-    render_techo(sinA, cosA, sinB, cosB, output, zbuffer, (alto/2), ancho, profundo, x, z, y);
+    render_techo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (alto/2), ancho, profundo, x, z, y);
 
     // suelo
-    render_suelo(sinA, cosA, sinB, cosB, output, zbuffer, -(alto/2), ancho, profundo, x, z, y);
+    render_suelo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(alto/2), ancho, profundo, x, z, y);
     
 }
 
-void render_cabeza_creeper(const int ancho, const int alto, const int profundo, const int x, const int y, const int z, const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer) {
+void render_cabeza_creeper(const int ancho, const int alto, const int profundo, const int x, const int y, const int z, const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer) {
     // pared trasera 
-    render_pared_trasera(sinA, cosA, sinB, cosB, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z);
+    render_pared_trasera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z);
     
     // pared delantera
-    render_cara(sinA, cosA, sinB, cosB, output, zbuffer, (profundo/2), ancho, alto, x, y, -z);
+    render_cara(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (profundo/2), ancho, alto, x, y, -z);
 
     // pared dere
-    render_pared_dere(sinA, cosA, sinB, cosB, output, zbuffer, (ancho/2), alto, profundo, y, z, x);
+    render_pared_dere(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (ancho/2), alto, profundo, y, z, x);
 
     // pared izq
-    render_pared_izq(sinA, cosA, sinB, cosB, output, zbuffer, -(ancho/2), alto, profundo, y, z, x);
+    render_pared_izq(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(ancho/2), alto, profundo, y, z, x);
 
     // techo
-    render_techo(sinA, cosA, sinB, cosB, output, zbuffer, (alto/2), ancho, profundo, x, z, y);
+    render_techo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (alto/2), ancho, profundo, x, z, y);
 
     // suelo
-    render_suelo(sinA, cosA, sinB, cosB, output, zbuffer, -(alto/2), ancho, profundo, x, z, y);
+    render_suelo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(alto/2), ancho, profundo, x, z, y);
     
 }
 
-void render_creeper(const float &sinA, const float &cosA, const float &sinB, const float &cosB, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int x, const int y, const int z) {
-    render_cabeza_creeper(8, 8, 8, 0 + x, 0 + y, 0 + z, sinA, cosA, sinB, cosB, output, zbuffer);
+void render_creeper(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int x, const int y, const int z) {
+    render_cabeza_creeper(8, 8, 8, 0 + x, 0 + y, 0 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
 
-    render_cubo(4, 8, 4, 0 + x, 8 + y, 0 + z, sinA, cosA, sinB, cosB, output, zbuffer);
+    render_cubo(4, 8, 4, 0 + x, 8 + y, 0 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
 
-    render_cubo(6, 2, 2, 0 + x, 14 + y, 2 + z, sinA, cosA, sinB, cosB, output, zbuffer);
+    render_cubo(6, 2, 2, 0 + x, 14 + y, 2 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
 
-    render_cubo(6, 2, 2, 0 + x, 14 + y, -2 + z, sinA, cosA, sinB, cosB, output, zbuffer);
+    render_cubo(6, 2, 2, 0 + x, 14 + y, -2 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
 }
 
 // Función que se ejecuta cada frame, para renderizar la pantalla en sí
-void render_frame(float A, float B) {
+void render_frame(float A, float B, float C) {
 
     // Cálculos previos
     vector<vector<string>> output(screen_height, vector<string>(screen_width, " "));
@@ -350,12 +349,13 @@ void render_frame(float A, float B) {
 
     const float sinA = sin(A), cosA = cos(A);
     const float sinB = sin(B), cosB = cos(B);
+    const float sinC = sin(C), cosC = cos(C);    
 
 
     // Objetos a renderizar
-    render_cubo(8, 8, 8, 0, -7, 0, sinA, cosA, sinB, cosB, output, zbuffer);
-    render_cubo(8, 8, 8, 7, 7, 7, sinA, cosA, sinB, cosB, output, zbuffer);
-    render_cubo(8, 8, 8, -7, 7, -7, sinA, cosA, sinB, cosB, output, zbuffer);
+    render_cubo(8, 8, 8, 0, -7, 0, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
+    render_cubo(8, 8, 8, 7, 7, 7, sinA, cosA, sinB, cosB, sinC, cosC,  output, zbuffer);
+    render_cubo(8, 8, 8, -7, 7, -7, sinA, cosA, sinB, cosB, sinC, cosC,  output, zbuffer);
 
 
     // Impresión del buffer de salida 
@@ -375,17 +375,19 @@ void render_frame(float A, float B) {
 int main() {
     float A = 0; // Inicio del ángulo de rotación en el eje y
     float B = 0; // Inicio del ángulo de rotación en el eje x
+    float C = 0; // Inicio del ángulo de rotación en el eje z
     int retraso_ms = 20; // Retraso en milisegundos por cada frame
 
     while (true) {
         cout << "\033[H"; 
 
         // Renderizar lo programado
-        render_frame(A, B);
+        render_frame(A, B, C);
 
         // Sumar a la rotación actual (para hacer que gire)
-        A += 0.05;
+        A += 0.04;
         B += 0.04;
+        C += 0.04;
 
         // Delay entre frames
         clock_t start_time = clock();
