@@ -26,6 +26,7 @@ g++ ascii-cube-engine.cc -o ascii-cube-engine
 
 ## Ejemplos 
 En la carpeta video_gif hay archivos MP4 y GIFs (peor calidad) con algunos ejemplos de lo que he conseguido hacer utilizando este motor, pero se podría construir casi cualquier cosa con bloques.
+
 ![Descripción del GIF](video_gif/colores.gif)
 
 ## Personalización
