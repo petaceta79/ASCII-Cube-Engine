@@ -70,3 +70,4 @@ render_creeper:
 - z = posición z en el espacio 3D del cubo
 
 ## Extra
+El archivo "creeper-ascii.cc" es un código con forma de creeper que ejecuta un creeper girando.
