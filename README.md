@@ -49,6 +49,7 @@ Además, dentro del while puedes modificar lo que se le suma a A, B y C para que
 Dentro de la función render_frame, en el apartado de "Objetos a renderizar", puedes llamar a las funciones que crees convenientes para crear los objetos que quieras.
 
 Las funciones disponibles son render_cubo y render_creeper:
+
 render_cubo:
 - ancho = anchura del cubo
 - alto = altura del cubo
