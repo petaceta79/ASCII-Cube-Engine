@@ -27,7 +27,10 @@ g++ ascii-cube-engine.cc -o ascii-cube-engine
 ## Ejemplos 
 En la carpeta video_gif hay archivos MP4 y GIFs (peor calidad) con algunos ejemplos de lo que he conseguido hacer utilizando este motor, pero se podría construir casi cualquier cosa con bloques.
 
-![Descripción del GIF](video_gif/colores.gif)
+![GIF](video_gif/creeper_triple.gif)
+![GIF](video_gif/colores.gif)
+![GIF](video_gif/cubo_solo.gif)
+![GIF](video_gif/cubos_colores.gif)
 
 ## Personalización
 - Puedes cambiar la densidad de puntos ajustando la variable *densidad*.
@@ -74,6 +77,8 @@ render_creeper:
 
 ## Extra
 El archivo "creeper-ascii.cc" es un código con forma de creeper que ejecuta un creeper girando.
+
+![GIF](video_gif/codigo_creeper.gif)
 
 ## Licencia
 
