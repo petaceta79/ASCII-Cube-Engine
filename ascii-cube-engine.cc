@@ -71,7 +71,7 @@ void render_cara(const float &sinA, const float &cosA, const float &sinB, const 
     }
 }
 
-void render_pared_delantera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_delantera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov, string ansi_code) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -99,7 +99,7 @@ void render_pared_delantera(const float &sinA, const float &cosA, const float &s
                     zbuffer[yp][xp] = ooz;
 
                     output[yp][xp] = ".,-~:;=!*#$@"[cara];
-                    output[yp][xp] = "\033[32m" + output[yp][xp] + "\033[0m";
+                    output[yp][xp] = "\033[" + ansi_code + "m" + output[yp][xp] + "\033[0m";
                 }
             }
 
@@ -107,7 +107,7 @@ void render_pared_delantera(const float &sinA, const float &cosA, const float &s
     }
 }
 
-void render_pared_trasera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_trasera(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov, string ansi_code) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -135,7 +135,7 @@ void render_pared_trasera(const float &sinA, const float &cosA, const float &sin
                     zbuffer[yp][xp] = ooz;
 
                     output[yp][xp] = ".,-~:;=!*#$@"[cara];
-                    output[yp][xp] = "\033[32m" + output[yp][xp] + "\033[0m";
+                    output[yp][xp] = "\033[" + ansi_code + "m" + output[yp][xp] + "\033[0m";
                 }
             }
 
@@ -143,7 +143,7 @@ void render_pared_trasera(const float &sinA, const float &cosA, const float &sin
     }
 }
 
-void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov, string ansi_code) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -171,7 +171,7 @@ void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, 
                     zbuffer[yp][xp] = ooz;
 
                     output[yp][xp] = ".,-~:;=!*#$@"[cara];
-                    output[yp][xp] = "\033[32m" + output[yp][xp] + "\033[0m";
+                    output[yp][xp] = "\033[" + ansi_code + "m" + output[yp][xp] + "\033[0m";
                 }
             }
 
@@ -179,7 +179,7 @@ void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, 
     }
 }
 
-void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov, string ansi_code) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -207,7 +207,7 @@ void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, c
                     zbuffer[yp][xp] = ooz;
 
                     output[yp][xp] = ".,-~:;=!*#$@"[cara];
-                    output[yp][xp] = "\033[32m" + output[yp][xp] + "\033[0m";
+                    output[yp][xp] = "\033[" + ansi_code + "m" + output[yp][xp] + "\033[0m";
                 }
             }
 
@@ -215,7 +215,7 @@ void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, c
     }
 }
 
-void render_techo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_suelo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov, string ansi_code) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -243,7 +243,7 @@ void render_techo(const float &sinA, const float &cosA, const float &sinB, const
                     zbuffer[yp][xp] = ooz;
 
                     output[yp][xp] = ".,-~:;=!*#$@"[cara];
-                    output[yp][xp] = "\033[32m" + output[yp][xp] + "\033[0m";
+                    output[yp][xp] = "\033[" + ansi_code + "m" + output[yp][xp] + "\033[0m";
                 }
             }
 
@@ -251,7 +251,7 @@ void render_techo(const float &sinA, const float &cosA, const float &sinB, const
     }
 }
 
-void render_suelo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov) {
+void render_techo(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int pos, const int ancho, const int alto, int x_mov, int y_mov, int z_mov, string ansi_code) {
     for (float i = -ancho/2; i <= ancho/2; i += densidad) {
         for (float e = -alto/2; e <= alto/2; e += densidad) {
             int cara = 0;
@@ -279,7 +279,7 @@ void render_suelo(const float &sinA, const float &cosA, const float &sinB, const
                     zbuffer[yp][xp] = ooz;
 
                     output[yp][xp] = ".,-~:;=!*#$@"[cara];
-                    output[yp][xp] = "\033[32m" + output[yp][xp] + "\033[0m";
+                    output[yp][xp] = "\033[" + ansi_code + "m" + output[yp][xp] + "\033[0m";
                 }
             }
 
@@ -288,56 +288,68 @@ void render_suelo(const float &sinA, const float &cosA, const float &sinB, const
 }
 
 // Funciones para el renderizado de cubos u objetos
-void render_cubo(const int ancho, const int alto, const int profundo, const int x, const int y, const int z, const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer) {
+/*
+  ancho = anchura del cubo
+  alto = altura del cubo
+  profundo = profundidad del cubo
+  x = posición x en el espacio 3D del cubo
+  y = posición y en el espacio 3D del cubo
+  z = posición z en el espacio 3D del cubo
+  (sinA, cosA, sinB, cosB, sinC, cosC) = valores precalculados para optimizar el tiempo de ejecución
+  output = estructura interna donde se guardarán los píxeles correspondientes
+  zbuffer = estructura interna donde se guardará la profundidad de cada píxel del output
+  ansi_codes = vector que asigna a cada cara el valor ANSI indicado con el orden (delante, derecha, detrás, izquierda, abajo, arriba)
+*/
+void render_cubo(const int ancho, const int alto, const int profundo, const int x, const int y, const int z, const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, vector<string> ansi_codes) {
     // pared trasera 
-    render_pared_trasera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z);
+    render_pared_trasera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z, ansi_codes[2]);
     
     // pared delantera
-    render_pared_delantera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (profundo/2), ancho, alto, x, y, -z);
+    render_pared_delantera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (profundo/2), ancho, alto, x, y, -z, ansi_codes[0]);
 
     // pared dere
-    render_pared_dere(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (ancho/2), alto, profundo, y, z, x);
+    render_pared_dere(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (ancho/2), alto, profundo, y, z, x, ansi_codes[1]);
 
     // pared izq
-    render_pared_izq(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(ancho/2), alto, profundo, y, z, x);
-
-    // techo
-    render_techo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (alto/2), ancho, profundo, x, z, y);
+    render_pared_izq(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(ancho/2), alto, profundo, y, z, x, ansi_codes[3]);
 
     // suelo
-    render_suelo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(alto/2), ancho, profundo, x, z, y);
+    render_suelo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (alto/2), ancho, profundo, x, z, y, ansi_codes[4]);
+
+    // techo
+    render_techo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(alto/2), ancho, profundo, x, z, y, ansi_codes[5]);
     
 }
 
 void render_cabeza_creeper(const int ancho, const int alto, const int profundo, const int x, const int y, const int z, const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer) {
     // pared trasera 
-    render_pared_trasera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z);
+    render_pared_trasera(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(profundo/2), ancho, alto, x, y, -z, "32");
     
     // pared delantera
     render_cara(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (profundo/2), ancho, alto, x, y, -z);
 
     // pared dere
-    render_pared_dere(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (ancho/2), alto, profundo, y, z, x);
+    render_pared_dere(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (ancho/2), alto, profundo, y, z, x, "32");
 
     // pared izq
-    render_pared_izq(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(ancho/2), alto, profundo, y, z, x);
+    render_pared_izq(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(ancho/2), alto, profundo, y, z, x, "32");
 
     // techo
-    render_techo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (alto/2), ancho, profundo, x, z, y);
+    render_techo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, (alto/2), ancho, profundo, x, z, y, "32");
 
     // suelo
-    render_suelo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(alto/2), ancho, profundo, x, z, y);
+    render_suelo(sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, -(alto/2), ancho, profundo, x, z, y, "32");
     
 }
 
 void render_creeper(const float &sinA, const float &cosA, const float &sinB, const float &cosB, const float &sinC, const float &cosC, vector<vector<string>> &output, vector<vector<float>> &zbuffer, const int x, const int y, const int z) {
     render_cabeza_creeper(8, 8, 8, 0 + x, 0 + y, 0 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
 
-    render_cubo(4, 8, 4, 0 + x, 8 + y, 0 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
+    render_cubo(4, 8, 4, 0 + x, 8 + y, 0 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, vector<string>(6,"32"));
 
-    render_cubo(6, 2, 2, 0 + x, 14 + y, 2 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
+    render_cubo(6, 2, 2, 0 + x, 14 + y, 2 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, vector<string>(6,"32"));
 
-    render_cubo(6, 2, 2, 0 + x, 14 + y, -2 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
+    render_cubo(6, 2, 2, 0 + x, 14 + y, -2 + z, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, vector<string>(6,"32"));
 }
 
 // Función que se ejecuta cada frame, para renderizar la pantalla en sí
@@ -353,9 +365,16 @@ void render_frame(float A, float B, float C) {
 
 
     // Objetos a renderizar
-    render_cubo(8, 8, 8, 0, -7, 0, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer);
-    render_cubo(8, 8, 8, 7, 7, 7, sinA, cosA, sinB, cosB, sinC, cosC,  output, zbuffer);
-    render_cubo(8, 8, 8, -7, 7, -7, sinA, cosA, sinB, cosB, sinC, cosC,  output, zbuffer);
+    render_cubo(6, 6, 6, 0, 0, 0, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"37", "37", "37", "37", "37", "37"});
+    render_cubo(6, 6, 6, 6, 0, 0, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"33", "33", "33", "33", "33", "33"});
+    render_cubo(6, 6, 6, -6, 0, 0, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"31", "31", "31", "31", "31", "31"});
+    render_cubo(6, 6, 6, 0, 0, 6, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"38;5;208", "38;5;208", "38;5;208", "38;5;208", "38;5;208", "38;5;208"});
+    render_cubo(6, 6, 6, 6, 0, 6, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"34", "34", "34", "34", "34", "34"});
+    render_cubo(6, 6, 6, -6, 0, 6, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"32", "32", "32", "32", "32", "32"});
+    render_cubo(6, 6, 6, -6, 0, 6, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"32", "32", "32", "32", "32", "32"});
+    render_cubo(6, 6, 6, 0, 0, -6, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"38;5;201", "38;5;201", "38;5;201", "38;5;201", "38;5;201", "38;5;201"});
+    render_cubo(6, 6, 6, -6, 0, -6, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"38;5;93", "38;5;93", "38;5;93", "38;5;93", "38;5;93", "38;5;93"});
+    render_cubo(6, 6, 6, 6, 0, -6, sinA, cosA, sinB, cosB, sinC, cosC, output, zbuffer, {"38;5;51", "38;5;51", "38;5;51", "38;5;51", "38;5;51", "38;5;51"});
 
 
     // Impresión del buffer de salida 
