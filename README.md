@@ -24,8 +24,9 @@ Clona este repositorio y compila con `g++`:
 g++ ascii-cube-engine.cc -o ascii-cube-engine
 ```
 
-## Ejemplos (gifs)
-En ello
+## Ejemplos 
+En la carpeta video_gif hay archivos MP4 y GIFs (peor calidad) con algunos ejemplos de lo que he conseguido hacer utilizando este motor, pero se podría construir casi cualquier cosa con bloques.
+![Descripción del GIF](video_gif/colores.gif)
 
 ## Personalización
 - Puedes cambiar la densidad de puntos ajustando la variable *densidad*.
