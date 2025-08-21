@@ -72,3 +72,7 @@ render_creeper:
 
 ## Extra
 El archivo "creeper-ascii.cc" es un código con forma de creeper que ejecuta un creeper girando.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Esto significa que puedes usar, copiar, modificar, fusionar, publicar, distribuir, siempre y cuando incluyas el aviso de copyright y esta licencia en todas las copias o partes sustanciales del software.
