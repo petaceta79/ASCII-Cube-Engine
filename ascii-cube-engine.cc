@@ -37,7 +37,7 @@ void render_cara(const float &sinA, const float &cosA, const float &sinB, const 
             float L = cosA*cosB;
             cara = (int) (L * 11);
 
-            if (L <= 0) {
+            if (L < 0) {
                 continue; 
             }
 
@@ -78,7 +78,7 @@ void render_pared_delantera(const float &sinA, const float &cosA, const float &s
             float L = cosA*cosB;
             cara = (int) (L * 11);
 
-            if (L <= 0) {
+            if (L < 0) {
                 continue; 
             }
 
@@ -114,7 +114,7 @@ void render_pared_trasera(const float &sinA, const float &cosA, const float &sin
             float L = -cosA*cosB;
             cara = (int) (L * 11);
 
-            if (L <= 0) {
+            if (L < 0) {
                 continue; 
             }
 
@@ -150,7 +150,7 @@ void render_pared_dere(const float &sinA, const float &cosA, const float &sinB, 
             float L = -sinA*cosB;
             cara = (int) (L * 11);
 
-            if (L <= 0) {
+            if (L < 0) {
                 continue; 
             }
 
@@ -186,7 +186,7 @@ void render_pared_izq(const float &sinA, const float &cosA, const float &sinB, c
             float L = sinA*cosB;
             cara = (int) (L * 11);
 
-            if (L <= 0) {
+            if (L < 0) {
                 continue; 
             }
 
@@ -222,7 +222,7 @@ void render_suelo(const float &sinA, const float &cosA, const float &sinB, const
             float L = sinB;
             cara = (int) (L * 11);
 
-            if (L <= 0) {
+            if (L < 0) {
                 continue; 
             }
 
@@ -258,7 +258,7 @@ void render_techo(const float &sinA, const float &cosA, const float &sinB, const
             float L = -sinB;
             cara = (int) (L * 11);
 
-            if (L <= 0) {
+            if (L < 0) {
                 continue; 
             }
 
