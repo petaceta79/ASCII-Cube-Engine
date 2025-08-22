@@ -34,7 +34,7 @@ En la carpeta video_gif hay archivos MP4 y GIFs (peor calidad) con algunos ejemp
 ![GIF](video_gif/corazon.gif)
 
 ## Personalización
-- Puedes cambiar la densidad de puntos ajustando la variable *densidad*.
+- Puedes modificar la **densidad**, que es la cantidad de puntos que se calculan por cara. Esto no hará que aumente siempre el relleno, sino que lo hará más preciso.
 
 - El tamaño de pantalla está definido por screen_width y screen_height.
 
