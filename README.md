@@ -29,6 +29,7 @@ En la carpeta video_gif hay archivos MP4 y GIFs (peor calidad) con algunos ejemp
 
 ![GIF](video_gif/creeper_triple.gif)
 ![GIF](video_gif/colores.gif)
+![GIF](video_gif/playa.gif)
 ![GIF](video_gif/cubo_solo.gif)
 ![GIF](video_gif/cubos_colores.gif)
 ![GIF](video_gif/corazon.gif)
